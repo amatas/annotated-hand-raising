@@ -1,4 +1,6 @@
-var nano = require('nano')('http://localhost:5984');
+//var express = require('express');
+//var router = express.Router();
+var nano = require('nano')('http://localhost:5984');	//local hosting
 var nodemailer = require('nodemailer');
 var mail = nodemailer.createTransport(
 /*	{
@@ -581,6 +583,109 @@ function changehands(socket, command, data, reply)
 
 var io;
 
+/**
+ * special version of changehands for use with the old browser version.
+ */
+function changehandsretro(mname, command, data, reply)
+{
+	console.log(mname);
+	db.get('##HANDS##'+mname, function(err, doc)
+	{
+		if(err)
+		{
+			console.log('ERROR');
+		}
+		else
+		{
+			var success = true;	//able to force an error if execution goes bad (or authorization failure occurs)
+			if(command == 'RAISE')
+			{
+				var found = false;
+				var empty = true;
+				if(doc.hands.length > 0)
+				{
+					empty = false;
+					for(i = 0; i < doc.hands.length; i++)
+					{
+						if(doc.hands[i].name == data.name && doc.hands[i].ID == data.ID)
+						{
+							doc.hands[i].type = data.type;
+							doc.hands[i].comment = data.comment;
+							found = true;
+						}
+					}
+				}
+				if(!found)
+				{
+					if(empty)
+					{
+						var blank = {
+							name: '',
+							ID: 0,
+							type: 'X',
+							comment: ''
+						};
+						doc.hands.push(blank);
+					}
+					var entry = {
+						name: data.name,
+						ID: data.ID,
+						type: data.type,
+						comment: data.comment
+					};
+					doc.hands.push(entry);
+				}
+				console.log('<EVENT> user "' + data.name + '" raised hand');
+			}
+			else if(command == 'LOWER')
+			{
+		console.log('yo');
+				if(doc.hands.length > 0)
+				{
+					for(i = 0; i < doc.hands.length; i++)
+					{
+						if(doc.hands[i].name == data.name && doc.hands[i].ID == data.ID)
+						{
+							doc.hands[i] = {	//scrubs it as a blank entry
+								name: '',
+								ID: 0,
+								type: 'X',
+								comment: ''
+							};
+						}
+					}
+					var blanks = true;	//checks if list is entirely empty, if so scrubs blanks
+					for(i = 0; i < doc.hands.length; i++)
+					{
+						if(doc.hands[i].type != 'X') blanks = false;
+					}
+					if(blanks)
+					{
+						doc.hands = [];
+					}
+				}
+				console.log('<EVENT> user "' + data.name + '" lowered hand');
+			}
+			
+			if(success)
+			{
+				db.insert(doc, function(err, doc)
+				{
+					if(err)
+					{
+						changehands(mname, command, data, reply);
+					}
+					else
+					{
+						updatehands(io.sockets.in(mname), mname);
+						reply();
+					}
+				});
+			}
+		}
+	});
+}
+
 var database = {
 	activate: function(server)
 	{
@@ -646,6 +751,14 @@ var database = {
 			});
 		});
 		console.log("SERVER ACTIVE");
+	},
+	retroraise: function(mname, name, ID, type, reply)
+	{
+		changehandsretro(mname, 'RAISE', {name: name, ID: ID, type: type, comment: ''}, reply);
+	},
+	retrolower: function(mname, name, ID, reply)
+	{
+		changehandsretro(mname, 'LOWER', {name: name, ID: ID}, reply);
 	}
 };
 

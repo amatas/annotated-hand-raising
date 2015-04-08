@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<head>
+		<title> TOHRU </title>
+		<meta http-equiv="refresh" content="10" />
+		<link rel="stylesheet" type="text/css" href="stylesheets/tohru.css">
+	</head>
+	<body>
+		<div class="logomain">
+			<img class="logoimg" src="./images/TOHRU_Hand_crop.png" height=80px>
+			<div class="logotext">
+				<div class="logotitle">
+					TOHRU - Trace Online
+				</div>
+				<div class="logobottom">
+					Hand Raising Utility
+				</div>
+			</div>
+		</div>
+		<div id="controls" class="controlbox">
+			<p>
+				Please add me to the queue to speak about:
+			</p>
+			<p>
+				<form action="old/raises" method="post">
+					<input type="hidden" name="htype" value="A">
+					<input type="hidden" name="name" value="XXXXUSERNAMEXXXX">
+					<input type="hidden" name="ID" value="XXXXUSERIDXXXX">
+					<input type="hidden" name="url" value="XXXXTHISURLXXXX">
+				<button class="commentbutton" type="submit"><img src="./images/S_Icon.png" height=20 style="vertical-align:middle">
+					ame Topic
+				</button>
+				</form>
+			</p>
+			<p>
+				<form action="old/raises" method="post">
+					<input type="hidden" name="htype" value="N">
+					<input type="hidden" name="name" value="XXXXUSERNAMEXXXX">
+					<input type="hidden" name="ID" value="XXXXUSERIDXXXX">
+					<input type="hidden" name="url" value="XXXXTHISURLXXXX">
+				<button class="commentbutton" type="submit"><img src="./images/N_Icon.png" height=20 style="vertical-align:middle">
+					ew Topic
+				</button>
+			</form>
+			</p>
+			<p>
+				<form action="old/raises" method="post">
+					<input type="hidden" name="htype" value="A">
+					<input type="hidden" name="name" value="XXXXUSERNAMEXXXX">
+					<input type="hidden" name="ID" value="XXXXUSERIDXXXX">
+					<input type="hidden" name="url" value="XXXXTHISURLXXXX">
+				<button class="commentbutton" type="submit"><img src="./images/A_Icon.png" height=20 style="vertical-align:middle">
+					nswer to Question
+				</button>
+				that was asked by speaker
+				</form>
+			</p>
+			<p>
+				<form action="old/raises" method="post">
+					<input type="hidden" name="htype" value="P">
+					<input type="hidden" name="name" value="XXXXUSERNAMEXXXX">
+					<input type="hidden" name="ID" value="XXXXUSERIDXXXX">
+					<input type="hidden" name="url" value="XXXXTHISURLXXXX">
+					<button class="commentbutton" type="submit"><img src="./images/P_Icon.png" height=20 style="vertical-align:middle">
+						ropose Resolution
+					</button>
+					addressing all issues
+				</form>
+			</p>
+			<div id="downbutton">
+				<form action="old/lowers" method="post">
+					<input type="hidden" name="name" value="XXXXUSERNAMEXXXX">
+					<input type="hidden" name="ID" value="XXXXUSERIDXXXX">
+					<input type="hidden" name="url" value="XXXXTHISURLXXXX">
+					<button type="submit">Lower Hand</button>
+				</form>
+			</div>
+		</div>
+		<br/>
+		<p>
+			<div class="speakerbox">
+				<h3>Currently Speaking:</h3>
+				<div id="speaker">
+					XXXXCURRENTSPEAKERXXXX
+				</div>
+			</div>
+		</p>
+		<div id="theList">
+			XXXXTHELISTXXXX
+		</div>
+	</body>
+</html>

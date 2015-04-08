@@ -1,13 +1,13 @@
 /*
  * THIS FILE IS DEPRECATED
  * This is what I used to use to do everything database.js does before websockets were implemented, just keeping around for reference
+ * an un-deprecated version is used as listsold.js for non-javascript clients
  */
 
 var express = require('express');
 var router = express.Router();
-//var nano = require('nano')('http://localhost:5984');	//change to proper login
-var nano = require('nano')('https://tohrutest:thisisthetohrupassword@tohrutest.couchappy.com:443');
-var nodemailer = require('nodemailer');
+var nano = require('nano')('http://localhost:5984');	//change to proper login
+//var nodemailer = require('nodemailer');
 var mail = nodemailer.createTransport(
 /*	{
 		service: 'gmail',

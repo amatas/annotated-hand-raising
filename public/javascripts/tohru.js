@@ -542,6 +542,8 @@ $(document).ready(function()
 	{
 		if(AllSet)
 		{
+			//$.post("/listold/test", {alpha: "LOLWTFBBQ"});//TODO: reference for http requests
+			$.get("olda/", {alfa: "lolwtfbbq"});
 			AllSet = false;
 			clearInterval(startup);
 			if(cookies.load())

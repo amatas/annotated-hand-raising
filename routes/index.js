@@ -8,7 +8,7 @@ router.get('/', function(req, res)
 
 router.get('/test', function(req, res)
 {
-	res.sendfile('./views/test.html');
+	res.sendfile('./views/oldmainpage.html');
 });
 
 router.get('/lay', function(req, res)
