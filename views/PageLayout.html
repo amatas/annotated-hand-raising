@@ -3,8 +3,67 @@
 	<head>
 		<title> LAYOUT TESTING PAGE </title>
 		<link rel="stylesheet" type="text/css" href="stylesheets/tohru.css">
+		<!-- CSS files required by Preferences Editor -->
+        <link rel="stylesheet" type="text/css" media="all" href="infusion/framework/fss/css/fss-reset-global.css" />
+        <link rel="stylesheet" type="text/css" media="all" href="infusion/framework/fss/css/fss-base-global.css" />
+        <link rel="stylesheet" type="text/css" media="all" href="infusion/framework/fss/css/fss-layout.css" />
+        <link rel="stylesheet" type="text/css" media="all" href="infusion/framework/fss/css/fss-text.css" />
+        <link rel="stylesheet" type="text/css" href="infusion/framework/preferences/css/fss/fss-theme-bw-prefsEditor.css" />
+        <link rel="stylesheet" type="text/css" href="infusion/framework/preferences/css/fss/fss-theme-wb-prefsEditor.css" />
+        <link rel="stylesheet" type="text/css" href="infusion/framework/preferences/css/fss/fss-theme-by-prefsEditor.css" />
+        <link rel="stylesheet" type="text/css" href="infusion/framework/preferences/css/fss/fss-theme-yb-prefsEditor.css" />
+        <link rel="stylesheet" type="text/css" href="infusion/framework/preferences/css/fss/fss-theme-lgdg-prefsEditor.css" />
+        <link rel="stylesheet" type="text/css" href="infusion/framework/preferences/css/fss/fss-text-prefsEditor.css" />
+        <link rel="stylesheet" type="text/css" href="infusion/lib/jquery/ui/css/fl-theme-bw/bw.css" />
+        <link rel="stylesheet" type="text/css" href="infusion/lib/jquery/ui/css/fl-theme-wb/wb.css" />
+        <link rel="stylesheet" type="text/css" href="infusion/lib/jquery/ui/css/fl-theme-by/by.css" />
+        <link rel="stylesheet" type="text/css" href="infusion/lib/jquery/ui/css/fl-theme-yb/yb.css" />    
+        <link rel="stylesheet" type="text/css" href="infusion/lib/jquery/ui/css/fl-theme-lgdg/lgdg.css" />    
+        <link rel="stylesheet" type="text/css" href="infusion/framework/preferences/css/SeparatedPanelPrefsEditor.css" />
+        
+        <!-- Infusion JavaScript library containing Preferences Framework code -->
+        <script type="text/javascript" src="infusion/infusion-tohru.js"></script>
+
+        <meta name="google-translate-customization" content="3328c40ea4eed3e3-cbb9af30ca533a7c-g3e2190a487315572-19"></meta>
+
 	</head>
-	<body>
+	<body><!-- begin markup for Prefs Editor Panel -->
+      <div class="flc-prefsEditor-separatedPanel fl-prefsEditor-separatedPanel">
+          <!-- This is the div that will contain the Preference Editor component -->
+          <div class="flc-slidingPanel-panel flc-prefsEditor-iframe"></div>
+          <!-- This div is for the sliding panel that shows and hides the Preference Editor controls -->
+          <div class="fl-panelBar">
+              <span class="fl-prefsEditor-buttons">
+                  <button id="reset" class="flc-prefsEditor-reset fl-prefsEditor-reset"><span class="fl-icon-undo"></span> Reset</button>
+                  <button id="show-hide" class="flc-slidingPanel-toggleButton fl-prefsEditor-showHide"> Show/Hide</button>
+              </span>
+          </div>
+      </div>
+      <!-- end markup for Prefs Editor Panel -->
+      <script type="text/javascript">
+      var prefsEditor = fluid.prefs.create(".flc-prefsEditor-separatedPanel", {
+          build: {
+              gradeNames: [
+                  "fluid.prefs.auxSchema.starter"
+              ],
+              auxiliarySchema: {
+                  templatePrefix: "infusion/framework/preferences/html/", 
+                  messagePrefix: "infusion/framework/preferences/messages/",
+                  tableOfContents: {
+                      enactor: {
+                          tocTemplate: "infusion/components/tableOfContents/html/TableOfContents.html"
+                      }
+                  }
+              }
+          }
+      });
+      </script>
+      <div class="flc-toc-tocContainer"> </div>
+      <div id="google_translate_element"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.FloatPosition.TOP_RIGHT}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 		<div id="origin">
 			<p>[WELCOME SCREEN]</p>
 			<div class="logomain">
