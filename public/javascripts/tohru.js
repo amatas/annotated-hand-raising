@@ -200,6 +200,32 @@ var WelcomeScreen = {
 			});
 		}
 	},
+ 	getUrlParameter: function(sParam)
+	{
+		var sPageURL = window.location.search.substring(1);
+		var sURLVariables = sPageURL.split('&');
+		for (var i = 0; i < sURLVariables.length; i++) 
+		{
+			var sParameterName = sURLVariables[i].split('=');
+			if (sParameterName[0] == sParam) 
+			{
+				return sParameterName[1].replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "");
+			}
+		}
+		return "";
+	},
+	gotoroom: function()
+	{
+		var roomidurl = this.getUrlParameter("room");
+		var nickname = this.getUrlParameter("nickname");
+
+		if (roomidurl.length > 0 && nickname.length > 0)
+		{
+			$('#namefield').val(nickname);
+			$('#meetingfield').val(roomidurl);
+			$('#btnParticipant').trigger( "click" );
+		}
+	}, 
 	modpass: function()
 	{
 		UserInfo.name = $('#namefield').val();
@@ -542,8 +568,6 @@ $(document).ready(function()
 	{
 		if(AllSet)
 		{
-			//$.post("/listold/test", {alpha: "LOLWTFBBQ"});//TODO: reference for http requests
-			$.get("olda/", {alfa: "lolwtfbbq"});
 			AllSet = false;
 			clearInterval(startup);
 			if(cookies.load())
@@ -619,6 +643,7 @@ $(document).ready(function()
 			{
 				cookies.wipe();
 				WelcomeScreen.load();
+				WelcomeScreen.gotoroom();
 			}
 		}
 	}, 50);

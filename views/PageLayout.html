@@ -22,7 +22,10 @@
         <link rel="stylesheet" type="text/css" href="infusion/framework/preferences/css/SeparatedPanelPrefsEditor.css" />
         
         <!-- Infusion JavaScript library containing Preferences Framework code -->
-        <script type="text/javascript" src="infusion/infusion-gahrt.js"></script>
+        <script type="text/javascript" src="infusion/infusion-tohru.js"></script>
+
+        <meta name="google-translate-customization" content="3328c40ea4eed3e3-cbb9af30ca533a7c-g3e2190a487315572-19"></meta>
+
 	</head>
 	<body><!-- begin markup for Prefs Editor Panel -->
       <div class="flc-prefsEditor-separatedPanel fl-prefsEditor-separatedPanel">
@@ -56,6 +59,11 @@
       });
       </script>
       <div class="flc-toc-tocContainer"> </div>
+      <div id="google_translate_element"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.FloatPosition.TOP_RIGHT}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 		<div id="origin">
 			<p>[WELCOME SCREEN]</p>
 			<div class="logomain">
@@ -89,7 +97,7 @@
 			<input class="entryfield" type="text" id="namefield" value="UserInfo.name">
 			</p>
 			<p>
-				<button onclick="WelcomeScreen.join();">
+				<button id="btnParticipant" onclick="WelcomeScreen.join();">
 					Enter as Participant
 				</button>
 				<button onclick="WelcomeScreen.modpass();">
