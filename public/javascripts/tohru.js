@@ -135,6 +135,7 @@ AllSet = false;
 var socket = io(':80');
 var registered = false;
 var showList = false;
+var pingnoise = 0;
 var currentMOTD = '';
 
 var UserInfo = {
@@ -200,32 +201,6 @@ var WelcomeScreen = {
 			});
 		}
 	},
- 	getUrlParameter: function(sParam)
-	{
-		var sPageURL = window.location.search.substring(1);
-		var sURLVariables = sPageURL.split('&');
-		for (var i = 0; i < sURLVariables.length; i++) 
-		{
-			var sParameterName = sURLVariables[i].split('=');
-			if (sParameterName[0] == sParam) 
-			{
-				return sParameterName[1].replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "");
-			}
-		}
-		return "";
-	},
-	gotoroom: function()
-	{
-		var roomidurl = this.getUrlParameter("room");
-		var nickname = this.getUrlParameter("nickname");
-
-		if (roomidurl.length > 0 && nickname.length > 0)
-		{
-			$('#namefield').val(nickname);
-			$('#meetingfield').val(roomidurl);
-			$('#btnParticipant').trigger( "click" );
-		}
-	}, 
 	modpass: function()
 	{
 		UserInfo.name = $('#namefield').val();
@@ -364,7 +339,6 @@ var MainScreen = {
 		$('#origin').empty();
 		$('#origin').append(PageLayout.MainScreen);
 		if(UserInfo.isMod) $('#origin').append(PageLayout.controls.modlegend);
-		$('#origin').append(PageLayout.controls.legend);
 		showList = true;
 		socket.emit('gimmelist');
 		this.drawControls();
@@ -378,6 +352,12 @@ var MainScreen = {
 		if(UserInfo.isMod)
 		{
 			$('#modcontrols').append(PageLayout.controls.modbox);
+                        switch(pingnoise)
+                        {
+                            case 0: $('#usenonoise').prop("checked", true); break;
+                            case 1: $('#usequietnoise').prop("checked", true); break;
+                            case 2: $('#useloudnoise').prop("checked", true); break;
+                        }
 		}
 		
 	},
@@ -506,6 +486,12 @@ socket.on('disconnect', function()
 	
 });
 
+socket.on('ping', function()
+{
+    if(pingnoise == 1) document.getElementById('softsound').play();
+    else if(pingnoise == 2) document.getElementById('loudsound').play();
+});
+
 socket.on('updatelist', function(data)
 {
 	if(showList)
@@ -568,6 +554,8 @@ $(document).ready(function()
 	{
 		if(AllSet)
 		{
+			//$.post("/listold/test", {alpha: "LOLWTFBBQ"});//TODO: reference for http requests
+			$.get("old/", {alfa: "lolwtfbbq"});
 			AllSet = false;
 			clearInterval(startup);
 			if(cookies.load())
@@ -643,7 +631,6 @@ $(document).ready(function()
 			{
 				cookies.wipe();
 				WelcomeScreen.load();
-				WelcomeScreen.gotoroom();
 			}
 		}
 	}, 50);

@@ -15,8 +15,7 @@ var PageLayout = {
 		down: '',
 		//modbox: '<p><button onclick="ModFunctions.advance()">Next Speaker</button><button onclick="ModFunctions.modnext()">Moderator Speaks Next</button></p>',
 		modbox: '',
-		modlegend: '',
-		legend: ''
+		modlegend: ''
 	},
 	images: {
 		TOHRU_Hand_crop: new Image()
@@ -33,7 +32,6 @@ var PageLayout = {
 			PageLayout.controls.down = data.split('<p>[CONTROLS-DOWN]</p>')[1];
 			PageLayout.controls.modbox = data.split('<p>[CONTROLS-MODBOX]</p>')[1];
 			PageLayout.controls.modlegend = data.split('<p>[MOD-LEGEND]</p>')[1];
-			PageLayout.controls.legend = data.split('<p>[LEGEND]</p>')[1];
 			AllSet = true;
 		});
 	},

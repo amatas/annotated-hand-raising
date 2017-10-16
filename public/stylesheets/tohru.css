@@ -1,20 +1,31 @@
-html,body
-{
-	font-family: cantarell, sans-serif;
-	margin: 5px 5px;
-}
 
-#origin
-{
-	height: 100%;
 
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .indent
 {
 	margin-left: 2em;
 }
-
+.logomain
+{
+	
+}
 .logoimg
 {
 	display:inline-block;
@@ -37,100 +48,52 @@ html,body
 	top: -10px;
 }
 
+
+
+
+
+
+
 .entryfield
 {
 	margin-left: 1em;
 }
 .controlbox
 {
-	margin: 5px 0px;
 	max-width: 400px;
+	border-style: ridge;
 	padding: 5px;
-	border: 1px solid;
-
 }
 .controlbox p
 {
-	margin: 5px 0px;
+	margin: 5px;
 }
-.commentbutton
+.controlbox .commentbutton
 {
-	font-size: 90%;
-}
-#suggestionbox
-{
-	width: 40%;
-}
-
-#comment
-{
-	width: 90%;
+	font-size: 14px;
 }
 .modbox
 {
-	border: 1px solid;
+	border-style: ridge;
 	background-color: #CCCCCC;
 	max-width: 400px;
 	padding: 5px;
-	margin: 0px 0px;
-
-}
-
-.modbox p
-{
-	margin: 5px;
 }
 .speakerbox
 {
-	background-color: #FFFF77;
+	background-color: #FFFF77	;
 	max-width: 400px;
-	border: 1px solid;
-	margin: 5px 0px;
+	border-style:ridge;
+	text-indent: 20px;
 	padding: 5px;
+	padding-bottom: 20px;
 }
-
-.speakerbox p
+.speakerbox div
 {
-	margin: 0px 0px;
-	text-align: left;
-}
-
-#speaker
-{
-
+	text-indent: 53px;
 	font-weight: bold;
-	margin: 20px;
-}
-
-#theList
-{
-	min-height: 100px;
-	padding: 5px;
-	margin-bottom: 5px;
-}
-
-#ListButtons
-{
-	margin: 5px 0px;
-	width: 400px;
-	padding: 5px;
-}
-
-#modlegend
-{
-	margin: 5px 0px;
-	font-size: small;
-}
-#legend
-{
-	font-size: small;
-}
-#copyright
-{
-	font-size: smaller;
 }
 .handlisting
 {
-	margin: 1px;
-	padding: 1px;
+	
 }

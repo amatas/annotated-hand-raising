@@ -384,6 +384,22 @@ function updatehands(recipient, mname)
 	});
 }
 
+
+function sendping(recipient, mname)
+{
+    db.get('##HANDS##'+mname, function(err, doc)
+    {
+        if(err)
+        {
+            sendping(recipient, mname);
+        }
+        else
+        {
+            recipient.emit('ping');
+        }
+    });
+}
+
 /**
  * Recursively makes a specified alteration to a meeting's hands list
  * @param {Object} the socket issuing the command
@@ -567,8 +583,12 @@ function changehands(socket, command, data, reply)
 					}
 					else
 					{
-						updatehands(socket.to(socket.mname), socket.mname);
 						updatehands(socket, socket.mname);
+						setTimeout(function(){updatehands(socket.to(socket.mname), socket.mname);}, 50);
+                                                if(command == "RAISE")
+                                                {
+                                                    setTimeout(function(){sendping(socket.to(socket.mname), socket.mname);}, 100);
+                                                }
 						reply(true);
 					}
 				});

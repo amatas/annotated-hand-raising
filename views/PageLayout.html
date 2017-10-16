@@ -3,67 +3,8 @@
 	<head>
 		<title> LAYOUT TESTING PAGE </title>
 		<link rel="stylesheet" type="text/css" href="stylesheets/tohru.css">
-		<!-- CSS files required by Preferences Editor -->
-        <link rel="stylesheet" type="text/css" media="all" href="infusion/framework/fss/css/fss-reset-global.css" />
-        <link rel="stylesheet" type="text/css" media="all" href="infusion/framework/fss/css/fss-base-global.css" />
-        <link rel="stylesheet" type="text/css" media="all" href="infusion/framework/fss/css/fss-layout.css" />
-        <link rel="stylesheet" type="text/css" media="all" href="infusion/framework/fss/css/fss-text.css" />
-        <link rel="stylesheet" type="text/css" href="infusion/framework/preferences/css/fss/fss-theme-bw-prefsEditor.css" />
-        <link rel="stylesheet" type="text/css" href="infusion/framework/preferences/css/fss/fss-theme-wb-prefsEditor.css" />
-        <link rel="stylesheet" type="text/css" href="infusion/framework/preferences/css/fss/fss-theme-by-prefsEditor.css" />
-        <link rel="stylesheet" type="text/css" href="infusion/framework/preferences/css/fss/fss-theme-yb-prefsEditor.css" />
-        <link rel="stylesheet" type="text/css" href="infusion/framework/preferences/css/fss/fss-theme-lgdg-prefsEditor.css" />
-        <link rel="stylesheet" type="text/css" href="infusion/framework/preferences/css/fss/fss-text-prefsEditor.css" />
-        <link rel="stylesheet" type="text/css" href="infusion/lib/jquery/ui/css/fl-theme-bw/bw.css" />
-        <link rel="stylesheet" type="text/css" href="infusion/lib/jquery/ui/css/fl-theme-wb/wb.css" />
-        <link rel="stylesheet" type="text/css" href="infusion/lib/jquery/ui/css/fl-theme-by/by.css" />
-        <link rel="stylesheet" type="text/css" href="infusion/lib/jquery/ui/css/fl-theme-yb/yb.css" />    
-        <link rel="stylesheet" type="text/css" href="infusion/lib/jquery/ui/css/fl-theme-lgdg/lgdg.css" />    
-        <link rel="stylesheet" type="text/css" href="infusion/framework/preferences/css/SeparatedPanelPrefsEditor.css" />
-        
-        <!-- Infusion JavaScript library containing Preferences Framework code -->
-        <script type="text/javascript" src="infusion/infusion-tohru.js"></script>
-
-        <meta name="google-translate-customization" content="3328c40ea4eed3e3-cbb9af30ca533a7c-g3e2190a487315572-19"></meta>
-
 	</head>
-	<body><!-- begin markup for Prefs Editor Panel -->
-      <div class="flc-prefsEditor-separatedPanel fl-prefsEditor-separatedPanel">
-          <!-- This is the div that will contain the Preference Editor component -->
-          <div class="flc-slidingPanel-panel flc-prefsEditor-iframe"></div>
-          <!-- This div is for the sliding panel that shows and hides the Preference Editor controls -->
-          <div class="fl-panelBar">
-              <span class="fl-prefsEditor-buttons">
-                  <button id="reset" class="flc-prefsEditor-reset fl-prefsEditor-reset"><span class="fl-icon-undo"></span> Reset</button>
-                  <button id="show-hide" class="flc-slidingPanel-toggleButton fl-prefsEditor-showHide"> Show/Hide</button>
-              </span>
-          </div>
-      </div>
-      <!-- end markup for Prefs Editor Panel -->
-      <script type="text/javascript">
-      var prefsEditor = fluid.prefs.create(".flc-prefsEditor-separatedPanel", {
-          build: {
-              gradeNames: [
-                  "fluid.prefs.auxSchema.starter"
-              ],
-              auxiliarySchema: {
-                  templatePrefix: "infusion/framework/preferences/html/", 
-                  messagePrefix: "infusion/framework/preferences/messages/",
-                  tableOfContents: {
-                      enactor: {
-                          tocTemplate: "infusion/components/tableOfContents/html/TableOfContents.html"
-                      }
-                  }
-              }
-          }
-      });
-      </script>
-      <div class="flc-toc-tocContainer"> </div>
-      <div id="google_translate_element"></div><script type="text/javascript">
-function googleTranslateElementInit() {
-  new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.FloatPosition.TOP_RIGHT}, 'google_translate_element');
-}
-</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+	<body>
 		<div id="origin">
 			<p>[WELCOME SCREEN]</p>
 			<div class="logomain">
@@ -97,7 +38,7 @@ function googleTranslateElementInit() {
 			<input class="entryfield" type="text" id="namefield" value="UserInfo.name">
 			</p>
 			<p>
-				<button id="btnParticipant" onclick="WelcomeScreen.join();">
+				<button onclick="WelcomeScreen.join();">
 					Enter as Participant
 				</button>
 				<button onclick="WelcomeScreen.modpass();">
@@ -156,11 +97,10 @@ function googleTranslateElementInit() {
 			<p id="meetingline">
 				Meeting Name: 
 				<input type="text" id="meetingfield" value="UserInfo.meeting">
-				<button onclick="CreateScreen.checkunique();">
-				Check Availability
-				</button>
 			</p>
-
+			<button onclick="CreateScreen.checkunique();">
+				Check Availability
+			</button>
 			<p>
 				Create Moderator Password:
 			</p>
@@ -192,50 +132,56 @@ function googleTranslateElementInit() {
 				</div>
 			</div>
 			<div id="controls" class="controlbox"></div>
-			
-
-			<div id="ListButtons">
-					<button onclick="MainScreen.userList();">
-					Full Attendance List
-				</button>
-				<button onclick="MainScreen.logOut();" style="float: right;">
-					Log Out
-				</button>
-			</div>
+			<br/>
 			<div id="modcontrols"></div>
-			<div class="speakerbox">
-				<p>Currently Speaking: <span id="speaker">LOADING...</span><a href="#current-help" style="float: right"><img src="./images/question.png" height=20 style="vertical-align:middle" title="Participants can use the Currently Speaking box to see the name of the person currently speaking.  This is especially helpful to those who are deaf and following by captions or participants who do not know the voices of the speakers."></a></p>
-			</div>
+			<p>
+				<div class="speakerbox">
+					<h3>Currently Speaking:</h3>
+					<div id="speaker">LOADING...</div>
+				</div>
+			</p>
 			<div id="theList">LOADING...</div>
-
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<button onclick="MainScreen.userList();">
+				Full Attendance List
+			</button>
+			<button onclick="MainScreen.logOut();">
+				Log Out
+			</button>
 			<p>[MAIN SCREEN]</p>
 			<p>[CONTROLS-MAIN]</p>
 			<p>
-				Click a button to add yourself to the list to speak:
+				Please add me to the queue to speak about:
 			</p>
 			<p>
-			
-				<button class="commentbutton" onclick="MainScreen.raise('S');"><img src="./images/S_Icon.png" style="vertical-align:middle" height="20"> Same
-				</button> (to speak on <b>same</b> topic)
+				<button class="commentbutton" onclick="MainScreen.raise('S');"><img src="./images/S_Icon.png" height=20 style="vertical-align:middle">
+					ame Topic
+				</button>
 			</p>
 			<p>
-				<button class="commentbutton" onclick="MainScreen.raise('N');"><img src="./images/N_Icon.png" style="vertical-align:middle" height="20"> New
-				</button> (to speak on <b>new</b> topic)
+				<button class="commentbutton" onclick="MainScreen.raise('N');"><img src="./images/N_Icon.png" height=20 style="vertical-align:middle">
+					ew Topic
+				</button>
 			</p>
 			<p>
-				<button class="commentbutton" onclick="MainScreen.raise('A');"><img src="./images/A_Icon.png" style="vertical-align:middle" height="20"> Answer
-				</button> (to <b>answer</b> question from speaker)
+				<button class="commentbutton" onclick="MainScreen.raise('A');"><img src="./images/A_Icon.png" height=20 style="vertical-align:middle">
+					nswer to Question
+				</button>
+				 that was asked by speaker
 			</p>
 			<p>
-				<button class="commentbutton" onclick="MainScreen.raise('P');"><img src="./images/P_Icon.png" style="vertical-align:middle" height="20"> Proposal
-				</button>  (to <b>propose resolution</b>)<a href="#proposal-help"><img src="./images/question.png" height=20 style="vertical-align:middle" title="The PROPOSAL button is intended to be used ONLY for a proposal that attempts to address all issues raised - not to argue resolution by simply adopting one position or another."></a>
-			</p>
-			<br>
-			<p>
-			    Type text here and re-press button above  to add comment after your name in list:<br>
-				<input id="comment" type="text" style="font-size: 16px; color: #777777" value="Optional reminder/hint" onblur="if(this.value==''){this.value='Optional reminder/hint'; this.style.color='#777777';}" onfocus="if(this.value=='Optional reminder/hint'){this.value=''; this.style.color='#000000';}"><a href="#hint-help"><img src="./images/question.png" height=20 style="vertical-align:middle" title="You can add a comment after your name in the list (to hint or remind you of your comment) by entering text in the Optional Reminder/Hint box  and then pressing (or re-pressing) on of the hand raise buttons."></a>
+				<button class="commentbutton" onclick="MainScreen.raise('P');"><img src="./images/P_Icon.png" height=20 style="vertical-align:middle">
+					ropose Resolution
+				</button>
+				 addressing all issues
 			</p>
 			<div id="downbutton"></div>
+			<p>
+				<input id="comment" type="text" style="font-size: 16px; color: #777777" size=30 value="Optional reminder/hint" onblur="if(this.value==''){this.value='Optional reminder/hint'; this.style.color='#777777';}" onfocus="if(this.value=='Optional reminder/hint'){this.value=''; this.style.color='#000000';}">
+			</p>
 			<p>[CONTROLS-MAIN]</p>
 			<p>[CONTROLS-DOWN]</p>
 			<p>
@@ -247,51 +193,39 @@ function googleTranslateElementInit() {
 			<p>[CONTROLS-MODBOX]</p>
 			<div class="modbox">
 				<p>
+					<img src="./images/+_Icon.png" height=20 style="vertical-align:middle">
 					<button onclick="ModFunctions.suggest()">
-						Manually add name to List
-					</button>:
-					<input id="suggestionbox" type="text" style="float: right">
+						Add Name Manually
+					</button>
+					<input id="suggestionbox" type="text">
 				</p>
 				<p>
-					<button onclick="ModFunctions.advance()" style="float: left">
+					<button onclick="ModFunctions.advance()">
 						Next Speaker
-					</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<a href="#speaking-help" style="float: right"><img src="./images/question.png" height=20 style="vertical-align:middle" title="When speaking as moderator - press the Speaking as Moderator button and it will pop you into the Currently Speaking box (and push the current speaker to top of queue). When you want to speak as a participant you can press the hand up button and it will put you in line like everyone else. "></a>
-					<button onclick="ModFunctions.modnext()" style="float: right">
-						Speaking as a Moderator
 					</button>
-
+					<button onclick="ModFunctions.modnext()">
+						Moderator Speaks Next
+					</button>
 				</p>
-			</div><!-- modbox -->
+                            <p>
+                                Hand Raised Alert Noise: 
+                                <form>
+                                    <input type="radio" name="noise" id="usenonoise" onclick="pingnoise = 0;"/> None
+                                    <input type="radio" name="noise" id="usequietnoise" onclick="pingnoise = 1;"/> Quiet
+                                    <input type="radio" name="noise" id="useloudnoise" onclick="pingnoise = 2;"/> Loud
+                                </form>
+                            </p>
+			</div>
 			<p>[CONTROLS-MODBOX]</p>
 			<p>[MOD-LEGEND]</p>
-			<div id="modlegend">
+			<p>
 				Moderators Only:    
 				<img src="./images/Totop_Icon.png" height=20 style="vertical-align:middle">
 				= Promote to Speaker    
 				<img src="./images/Delete_Icon.png" height=20 style="vertical-align:middle">
 				= Delete from List
-				<p>
-				When <a name="speaking-help">speaking as moderator</a> - press the <b>"Speaking as Moderator"</b> button and it will pop you into the Currently Speaking box (and push the current speaker to top of queue).   When you want to speak as a participant you can press the hand up button like everyone else and it will put you in line like everyone else.
-				</p>
-			</div>
-			<p>[MOD-LEGEND]</p>
-			<p>[LEGEND]</p>
-			<ol id="legend">
-			<li>
-			The <a name="proposal-help"><b>"Proposal"</b></a> button is intended to be used ONLY for a proposal that attempts to address all issues raised - not to argue resolution by simply adopting one position or another.
-			</li>
-			<li>
-			You can add a <a name="hint-help">comment</a> after your name in the list (to hint or remind you of your comment) by entering text in the <b>"Optional Reminder/Hint"</b> box  and then pressing (or re-pressing) on of the hand raise buttons.
-			</li>
-			<li>
-			Participants can use the <a name="current-help"><b>"Currently Speaking"</b></a> box to see the name of the person currently speaking.  This is especially helpful to those who are deaf and following by captions or participants who do not know the voices of the speakers.
-			</li>
-			</ol>
-			<p id="copyright">
-			This open source tool was developed by the Trace R&D Center at the University of Wisconsin-Madison to facilitate meeting participation by all users, the quick, the polite, those who use captions to follow a meeting, etc.
 			</p>
-			<p>[LEGEND]</p>
-		</div><!-- origin -->
+			<p>[MOD-LEGEND]</p>
+		</div>
 	</body>
 </html>
